@@ -19,3 +19,6 @@ To play with provided models, directly run:
 ```
 python play_with_ai.py
 ```
+
+### One Example Game Between RL-AI (black) and Rule-AI (white)
+![demo](demo.gif)
