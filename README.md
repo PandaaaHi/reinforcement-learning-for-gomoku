@@ -1,5 +1,5 @@
 ## Reinforcement-Learning-for-Gomoku
-This is an implementation of reinforcement learning algorithm (PPO) for playing Gomoku. To accelerate the training process, we adopt [ray](https://github.com/ray-project/ray) to scale our application and introduce asynchronous training to decouple data production and data consumption. We also implement a rule ai as baseline to choose the best model.
+This is an implementation of reinforcement learning algorithm (PPO) for playing Gomoku. To accelerate the training process, we adopt [ray](https://github.com/ray-project/ray) to scale our application and introduce asynchronous training to decouple data production and data consumption. We also implement a rule AI as baseline to choose the best model.
 
 ### Requirements
 To train the AI model from scratch, need:
