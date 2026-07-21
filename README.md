@@ -1,8 +1,8 @@
 ## Reinforcement-Learning-for-Gomoku
-This is an implementation of reinforcement learning algorithm (PPO) for playing Gomoku. To accelerate the training process, we adopt [ray](https://github.com/ray-project/ray) to scale our application and introduce asynchronous training to decouple data production and data consumption. We also implement a rule AI as baseline to choose the best model.
+This is an implementation of reinforcement learning algorithm (PPO) for playing Gomoku. To accelerate the training process, we adopt [ray](https://github.com/ray-project/ray) to scale our application and introduce asynchronous training to decouple data production and consumption. We also implement a rule AI as baseline.
 
 ### Requirements
-To train the AI model from scratch, need:
+To train the AI model from scratch, you may need:
 - numpy=2.4.6
 - pygame=2.6.1
 - ray=2.55.1
@@ -20,5 +20,5 @@ To play with provided models, directly run:
 python play_with_ai.py
 ```
 
-### One Example Game Between RL-AI (black) and Rule-AI (white)
+### One Example Game between RL-AI (black) and Rule-AI (white)
 ![demo](demo.gif)
