@@ -142,7 +142,7 @@ for precision, name in zip(precisions, names):
     save_path = os.path.join('outputs_quantsim', folder_name)
     os.makedirs(save_path, exist_ok=True)
 
-    print(f'quntiaztion format: {file_name}')
+    print(f'quantiaztion format: {file_name}')
     print(f'quantization matched: {np.sum(quant_matches)}/{len(torch_preds)}')
     print(f'quantization accuracy: {quant_accuracy:.4f} ({quant_accuracy * 100:.2f}%)\n')
 
