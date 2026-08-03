@@ -50,9 +50,7 @@ python convert_to_tflite.py
 The output ``.tflite`` file will be saved to ``quantization/outputs_aihub/``.
 
 #### Convert to `.dlc`
-To convert the torch model to ``.dlc``, several steps need to be taken.
-
-First, run quantization simulation to evaluate the accuracy impact of different precision configurations:
+To convert the torch model to ``.dlc``, several steps need to be taken. First, run quantization simulation to evaluate the accuracy impact of different precision configurations:
 ```bash
 cd quantization
 python quantsim.py
