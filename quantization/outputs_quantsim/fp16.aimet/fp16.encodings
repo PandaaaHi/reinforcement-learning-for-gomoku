@@ -1,0 +1,241 @@
+{
+    "activation_encodings": [
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "input"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/conv_input/conv_input.2/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.0/bn1/BatchNormalization_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.0/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.0/Relu_1_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.0/conv2/Conv_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.0/Add_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.1/bn1/BatchNormalization_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.1/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.1/Relu_1_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.1/conv2/Conv_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.1/Add_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.2/bn1/BatchNormalization_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.2/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.2/Relu_1_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.2/conv2/Conv_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/residual_blocks/residual_blocks.2/Add_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/policy_conv/policy_conv.2/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "policy"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/value_conv/value_conv.2/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "/Relu_output_0"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "value"
+        }
+    ],
+    "param_encodings": [
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "_v_144"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "residual_blocks.0.bn1.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "_v_170"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "residual_blocks.0.conv2.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "residual_blocks.1.bn1.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "_v_196"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "residual_blocks.1.conv2.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "residual_blocks.2.bn1.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "_v_222"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "residual_blocks.2.conv2.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "_v_248"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "policy_fc.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "_v_274"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "value_fc1.weight"
+        },
+        {
+            "bw": 16,
+            "dtype": "FLOAT",
+            "enc_type": "PER_TENSOR",
+            "name": "value_fc2.weight"
+        }
+    ],
+    "producer": {
+        "package": "aimet-onnx",
+        "version": "2.35.1"
+    },
+    "quantizer_args": {
+        "activation_bitwidth": 16,
+        "dtype": "float",
+        "is_symmetric": true,
+        "param_bitwidth": 16,
+        "per_channel_quantization": true,
+        "quant_scheme": "min_max"
+    },
+    "version": "1.0.0"
+}

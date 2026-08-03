@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="board_background">#FFEEB866</color>
+    <color name="grid_line">#FF000000</color>
+    <color name="black_stone">#FF1A1A1A</color>
+    <color name="white_stone">#FFF0F0F0</color>
+    <color name="black_stone_border">#FF333333</color>
+    <color name="white_stone_border">#FFCCCCCC</color>
+    <color name="last_move_highlight">#FFFF4444</color>
+    <color name="star_point">#FF000000</color>
+    <color name="primary">#FF6200EE</color>
+    <color name="primary_dark">#FF3700B3</color>
+    <color name="accent">#FF03DAC5</color>
+</resources>

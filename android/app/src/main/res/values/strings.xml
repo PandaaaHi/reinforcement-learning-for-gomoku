@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gomoku AI</string>
+    <string name="new_game">New Game</string>
+    <string name="your_turn">Your turn (Black)</string>
+    <string name="ai_thinking">AI thinking…</string>
+    <string name="you_win">You win!</string>
+    <string name="ai_wins">AI wins!</string>
+    <string name="draw">Draw!</string>
+    <string name="model_not_found">AI model failed to load</string>
+</resources>

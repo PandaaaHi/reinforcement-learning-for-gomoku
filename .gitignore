@@ -1,4 +1,12 @@
 .vscode/
-checkpoints/*
-!checkpoints/.gitkeep
+
 __pycache__/
+*.pyc
+training/checkpoints/*
+!training/checkpoints/.gitkeep
+
+android/build/
+android/.gradle/
+android/.idea/
+android/.kotlin
+android/local.properties
