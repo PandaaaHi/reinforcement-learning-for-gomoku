@@ -75,6 +75,9 @@ class TFLiteAIPlayer(
             })
             gpuDelegate = null
             useCPU = true
+
+            testInference()
+
             isLoaded = true
 
             val inputShape = interpreter!!.getInputTensor(0).shape()
@@ -96,6 +99,7 @@ class TFLiteAIPlayer(
         val valueOut = Array(1) { FloatArray(1) }
         val outputs = mutableMapOf<Int, Any>(0 to policyOut, 1 to valueOut)
         interpreter!!.runForMultipleInputsOutputs(arrayOf(zeroInput), outputs)
+        Log.d(TAG, "Test inference OK")
     }
 
     override fun selectMove(engine: GameEngine, forPlayer: Int): Int {
@@ -108,7 +112,8 @@ class TFLiteAIPlayer(
         if (validMoves.isEmpty()) return -1
 
         if (engine.moveCount == 0) {
-            return (GameEngine.BOARD_SIZE / 2) * GameEngine.BOARD_SIZE + (GameEngine.BOARD_SIZE / 2)
+            val center = GameEngine.BOARD_SIZE / 2
+            return center * GameEngine.BOARD_SIZE + center
         }
 
         val stateArray = engine.buildState(forPlayer)

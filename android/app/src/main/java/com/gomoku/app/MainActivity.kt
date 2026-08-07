@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     private val humanPlayer = GameEngine.BLACK
     private val aiPlayerStone = GameEngine.WHITE
+    private val draw = GameEngine.DRAW
 
     private val aiExecutor = Executors.newSingleThreadExecutor()
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -153,9 +154,13 @@ class MainActivity : AppCompatActivity() {
                 tvStatus.text = getString(R.string.ai_wins)
                 Toast.makeText(this, "AI wins, try another round!", Toast.LENGTH_LONG).show()
             }
-            2 -> {
+            draw -> {
                 tvStatus.text = getString(R.string.draw)
                 Toast.makeText(this, "Board is full, it's a draw!", Toast.LENGTH_LONG).show()
+            }
+            else -> {
+                Log.w("MainActivity", "Unexpected winner value: ${engine.winner}")
+                tvStatus.text = "Game Over"
             }
         }
     }

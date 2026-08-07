@@ -4,6 +4,7 @@ class GameEngine {
 
     companion object {
         const val BOARD_SIZE = 11
+        const val BOARD_SQ = BOARD_SIZE * BOARD_SIZE
         const val WIN_LENGTH = 5
         const val NUM_CHANNELS = 12
 
@@ -12,6 +13,7 @@ class GameEngine {
         const val EMPTY = 0
         const val BLACK = 1
         const val WHITE = -1
+        const val DRAW = 2
     }
 
     val board = Array(BOARD_SIZE) { IntArray(BOARD_SIZE) }
@@ -72,7 +74,7 @@ class GameEngine {
         }
 
         if (moveCount >= BOARD_SIZE * BOARD_SIZE) {
-            winner = 2
+            winner = DRAW
             gameOver = true
             return true
         }
@@ -94,7 +96,7 @@ class GameEngine {
             return true
         }
         if (moveCount >= BOARD_SIZE * BOARD_SIZE) {
-            winner = 2
+            winner = DRAW
             gameOver = true
             return true
         }
@@ -154,18 +156,18 @@ class GameEngine {
 
         for (r in 0 until BOARD_SIZE) {
             for (c in 0 until BOARD_SIZE) {
-                state[0 * 121 + r * 11 + c] = if (board[r][c] == forPlayer) 1f else 0f
-                state[1 * 121 + r * 11 + c] = if (board[r][c] == opponent) 1f else 0f
-                state[2 * 121 + r * 11 + c] = forPlayer.toFloat()
-                state[3 * 121 + r * 11 + c] = curResult.state[PatternDetector.IDX_OPEN_ONE][r][c]
-                state[4 * 121 + r * 11 + c] = curResult.state[PatternDetector.IDX_OPEN_TWO][r][c]
-                state[5 * 121 + r * 11 + c] = curResult.state[PatternDetector.IDX_OPEN_THREE][r][c]
-                state[6 * 121 + r * 11 + c] = curResult.state[PatternDetector.IDX_OPEN_FOUR][r][c]
-                state[7 * 121 + r * 11 + c] = curResult.state[PatternDetector.IDX_CLOSED_FOUR][r][c]
-                state[8 * 121 + r * 11 + c] = oppResult.state[PatternDetector.IDX_OPEN_ONE][r][c]
-                state[9 * 121 + r * 11 + c] = oppResult.state[PatternDetector.IDX_OPEN_TWO][r][c]
-                state[10 * 121 + r * 11 + c] = oppResult.state[PatternDetector.IDX_OPEN_THREE][r][c]
-                state[11 * 121 + r * 11 + c] = oppResult.state[PatternDetector.IDX_CLOSED_FOUR][r][c]
+                state[0 * BOARD_SQ + r * BOARD_SIZE + c] = if (board[r][c] == forPlayer) 1f else 0f
+                state[1 * BOARD_SQ + r * BOARD_SIZE + c] = if (board[r][c] == opponent) 1f else 0f
+                state[2 * BOARD_SQ + r * BOARD_SIZE + c] = forPlayer.toFloat()
+                state[3 * BOARD_SQ + r * BOARD_SIZE + c] = curResult.state[PatternDetector.IDX_OPEN_ONE][r][c]
+                state[4 * BOARD_SQ + r * BOARD_SIZE + c] = curResult.state[PatternDetector.IDX_OPEN_TWO][r][c]
+                state[5 * BOARD_SQ + r * BOARD_SIZE + c] = curResult.state[PatternDetector.IDX_OPEN_THREE][r][c]
+                state[6 * BOARD_SQ + r * BOARD_SIZE + c] = curResult.state[PatternDetector.IDX_OPEN_FOUR][r][c]
+                state[7 * BOARD_SQ + r * BOARD_SIZE + c] = curResult.state[PatternDetector.IDX_CLOSED_FOUR][r][c]
+                state[8 * BOARD_SQ + r * BOARD_SIZE + c] = oppResult.state[PatternDetector.IDX_OPEN_ONE][r][c]
+                state[9 * BOARD_SQ + r * BOARD_SIZE + c] = oppResult.state[PatternDetector.IDX_OPEN_TWO][r][c]
+                state[10 * BOARD_SQ + r * BOARD_SIZE + c] = oppResult.state[PatternDetector.IDX_OPEN_THREE][r][c]
+                state[11 * BOARD_SQ + r * BOARD_SIZE + c] = oppResult.state[PatternDetector.IDX_CLOSED_FOUR][r][c]
             }
         }
 

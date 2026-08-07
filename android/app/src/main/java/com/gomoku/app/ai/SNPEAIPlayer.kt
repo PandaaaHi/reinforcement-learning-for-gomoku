@@ -36,6 +36,25 @@ class SNPEAIPlayer(
 
     override fun loadModel(): Boolean {
         try {
+            // WARNING: caching with exists() need to be avoided here.
+            // If the APK ships a newer model, the stale cached copy in filesDir
+            // would still be used, causing a model-version mismatch.
+
+            // val dlcFile = File(context.filesDir, modelFileName)
+            // if (!dlcFile.exists()) {
+            //     try {
+            //         context.assets.open(modelFileName).use { input ->
+            //             FileOutputStream(dlcFile).use { output ->
+            //                 input.copyTo(output)
+            //             }
+            //         }
+            //     } catch (e: Exception) {
+            //         lastError = "DLC file not found: $modelFileName\nPlease place it in app/src/main/assets/"
+            //         Log.e(TAG, lastError!!, e)
+            //         return false
+            //     }
+            // }
+
             val dlcFile = File(context.filesDir, modelFileName)
             try {
                 context.assets.open(modelFileName).use { input ->
@@ -89,7 +108,7 @@ class SNPEAIPlayer(
             val builder = SNPE.NeuralNetworkBuilder(context.applicationContext as Application)
                 .setModel(dlcFile)
                 .setRuntimeOrder(*runtimes)
-                .setUnconsumedTensorsOutput(true)
+                .setUnconsumedTensorsOutput(true) // required; otherwise the policy output may be lost
 
             network = builder.build()
             true
