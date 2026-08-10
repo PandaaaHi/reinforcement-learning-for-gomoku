@@ -39,10 +39,11 @@ Here is an example game between RL-AI (black) and Rule-AI (white):
 ![demo](demo_ai_vs_ai.gif)
 
 ### 2. Quantization
-We offer two Android-compatible model file formats: ``.tflite`` for deployment via TensorFlow Lite, and ``.dlc`` via Qualcomm Snapdragon Neural Processing Engine (SNPE).
+We offer two Android-compatible model file formats: ``.tflite`` for deployment via TensorFlow Lite, and ``.dlc`` via Qualcomm Snapdragon Neural Processing Engine (SNPE). Below are the comparison results for different models, covering model size, accuracy, and average inference latency per step.
+![comparison](comparison.png)
 
 #### Convert to `.tflite`
-To compile the torch model directly to ``.tflite`` in float32 precision (no quantization applied):
+To compile the torch model directly to ``.tflite``:
 ```bash
 cd quantization
 python convert_to_tflite.py
@@ -75,7 +76,8 @@ The output ``.dlc`` file will be saved to ``quantization/outputs_sdk/``.
 Note: Both methods use the quantized ONNX model and encodings produced by ``quantsim.py`` (located in ``quantization/outputs_quantsim/``).
 
 ### 3. Android Deployment
-You can use Android Studio to build the ``android`` directory as a project. Once the build succeeds, you will obtain a runnable APK that can be installed on your Android device for inference validation. Note that the ``snpe-release.aar`` file in ``android/app/libs/`` comes from the qairt [zip file](https://apigwx-aws.qualcomm.com/qsc/public/v1/api/download/software/sdks/Qualcomm_AI_Runtime_Community/All/2.48.0.260626/v2.48.0.260626.zip), and you may replace the model files (``.tflite`` and ``.dlc``) in ``android/app/src/main/assets`` with the ones you obtain in the previous steps.
+You can use Android Studio to build the ``android`` directory as a project. Once the build succeeds, you will obtain a runnable APK that can be installed on your Android device for inference validation. Note that the ``snpe-release.aar`` file in ``android/app/libs/`` comes from the qairt [zip file](https://apigwx-aws.qualcomm.com/qsc/public/v1/api/download/software/sdks/Qualcomm_AI_Runtime_Community/All/2.48.0.260626/v2.48.0.260626.zip), and you may replace the model files (``.tflite`` and ``.dlc``) in ``android/app/src/main/assets/`` with the ones you obtain in the previous steps.
 
 Here is an example game between human player (black) and RL-AI (white):
 ![demo](demo_player_vs_ai.gif)
+
