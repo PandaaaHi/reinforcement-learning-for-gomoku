@@ -48,7 +48,7 @@ To compile the torch model directly to ``.tflite``:
 cd quantization
 python convert_to_tflite.py
 ```
-The output ``.tflite`` file will be saved to ``quantization/outputs_aihub/``.
+The output ``.tflite`` file will be saved to ``quantization/outputs_tflite/``.
 
 #### Convert to `.dlc`
 To convert the torch model to ``.dlc``, several steps need to be taken. First, run quantization simulation to evaluate the accuracy impact of different precision configurations:
@@ -64,20 +64,21 @@ After determining the optimal quantization precision, generate the final ``.dlc`
 cd quantization
 python quantize_aihub.py
 ```
-The output ``.dlc`` file will be saved to ``quantization/outputs_aihub/``.
+The output ``.dlc`` file will be saved to ``quantization/outputs_quant_aihub/``.
 
 ##### Option B: via AI Engine Direct SDK (local)
 ```bash
 cd quantization
 sh quantize_sdk.sh
 ```
-The output ``.dlc`` file will be saved to ``quantization/outputs_sdk/``.
+The output ``.dlc`` file will be saved to ``quantization/outputs_quant_sdk/``.
 
 Note: Both methods use the quantized ONNX model and encodings produced by ``quantsim.py`` (located in ``quantization/outputs_quantsim/``).
 
 ### 3. Android Deployment
-You can use Android Studio to build the ``android`` directory as a project. Once the build succeeds, you will obtain a runnable APK that can be installed on your Android device for inference validation. Note that the ``snpe-release.aar`` file in ``android/app/libs/`` comes from the qairt [zip file](https://apigwx-aws.qualcomm.com/qsc/public/v1/api/download/software/sdks/Qualcomm_AI_Runtime_Community/All/2.48.0.260626/v2.48.0.260626.zip), and you may replace the model files (``.tflite`` and ``.dlc``) in ``android/app/src/main/assets/`` with the ones you obtain in the previous steps.
+You can use Android Studio to build the ``android`` directory as a project. Once the build succeeds, you will obtain a runnable APK that can be installed on your Android device for inference validation. Within the interface of the installed application, you can click the ``NEW GAME`` button to play with the built-in reinforcement AI, and click the ``BENCHMARK`` button to test the inference latency.
+
+Note that the provided ``.tflite`` model in ``android/app/src/main/assets/`` is unquantized, and that the ``.dlc`` one is quantized with format ``w8a16``. You may replace the model files with the ones you obtain in the previous steps, and make sure to rename them to ``gomoku_model`` and include the correct extensions, i.e., ``.tflite`` or ``.dlc``. Moreover, the ``snpe-release.aar`` file in ``android/app/libs/`` comes from the ``qairt`` [zip file](https://apigwx-aws.qualcomm.com/qsc/public/v1/api/download/software/sdks/Qualcomm_AI_Runtime_Community/All/2.48.0.260626/v2.48.0.260626.zip). 
 
 Here is an example game between human player (black) and RL-AI (white):
 ![demo](demo_player_vs_ai.gif)
-
