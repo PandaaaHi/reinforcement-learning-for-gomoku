@@ -1,6 +1,7 @@
 package com.gomoku.app.ai
 
 import android.content.Context
+import android.os.SystemClock
 import android.util.Log
 import com.gomoku.app.game.GameEngine
 import org.tensorflow.lite.Interpreter
@@ -183,10 +184,15 @@ class TFLiteAIPlayer(
         inputBuffer.asFloatBuffer().put(data)
     }
 
+    val inferenceTimesMs = mutableListOf<Long>()
+
     private fun runInference(outputs: MutableMap<Int, Any>): Boolean {
         return try {
             val inputs = arrayOf(inputBuffer)
+            val start = SystemClock.elapsedRealtime()
             interpreter!!.runForMultipleInputsOutputs(inputs, outputs)
+            val elapsed = SystemClock.elapsedRealtime() - start
+            inferenceTimesMs.add(elapsed)
             true
         } catch (e: Exception) {
             Log.e(TAG, "Inference failed: ${e.message}", e)

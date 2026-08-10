@@ -18,7 +18,6 @@ class BoardView @JvmOverloads constructor(
         private const val MARGIN_RATIO = 0.08f
         private const val STONE_FRACTION = 0.42f
         private const val STAR_FRACTION = 0.12f
-        private const val HIGHLIGHT_RADIUS = 0.12f
     }
 
     private val boardPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {

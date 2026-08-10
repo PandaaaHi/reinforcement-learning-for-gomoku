@@ -2,6 +2,7 @@ package com.gomoku.app.ai
 
 import android.app.Application
 import android.content.Context
+import android.os.SystemClock
 import android.util.Log
 import com.gomoku.app.game.GameEngine
 import com.qualcomm.qti.snpe.FloatTensor
@@ -285,10 +286,16 @@ class SNPEAIPlayer(
         inputTensor?.write(data, 0, data.size)
     }
 
+    val inferenceTimesMs = mutableListOf<Long>()
+
     private fun runInference(): Map<String, FloatTensor>? {
         return try {
             val inputMap = mapOf(inputTensorName to inputTensor!!)
-            network!!.execute(inputMap)
+            val start = SystemClock.elapsedRealtime()
+            val result = network!!.execute(inputMap)
+            val elapsed = SystemClock.elapsedRealtime() - start
+            inferenceTimesMs.add(elapsed)
+            result
         } catch (e: Exception) {
             Log.e(TAG, "Inference failed: ${e.message}", e)
             null

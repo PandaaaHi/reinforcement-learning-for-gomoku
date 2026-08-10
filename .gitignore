@@ -6,6 +6,7 @@ training/checkpoints/*
 !training/checkpoints/.gitkeep
 
 android/build/
+android/app/build/
 android/.gradle/
 android/.idea/
 android/.kotlin
