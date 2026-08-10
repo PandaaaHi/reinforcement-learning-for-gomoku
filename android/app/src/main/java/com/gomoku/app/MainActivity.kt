@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             val result = BenchmarkRunner.run(
                 context = applicationContext,
                 playerFactory = { AIPlayerFactory.create(this) },
-                numGames = 10
+                numGames = 50
             )
             mainHandler.post {
                 btnBenchmark.isEnabled = true

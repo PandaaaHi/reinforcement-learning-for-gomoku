@@ -35,14 +35,14 @@ client = hub.Client()
 #     device=device,
 #     options='--target_runtime tflite',
 # )
-# compile_job.download_target_model(os.path.join('outputs_aihub', format))
+# compile_job.download_target_model(os.path.join('outputs_quant_aihub', format))
 
 compile_job = client.submit_compile_job(
     model=model_path,
     device=device,
     options='--target_runtime qnn_dlc',
 )
-compile_job.download_target_model(os.path.join('outputs_aihub', format))
+compile_job.download_target_model(os.path.join('outputs_quant_aihub', format))
 
 
 '''
@@ -101,11 +101,11 @@ Method 2: quantization from scratch (need to prepare calibration data); torch ->
 # #     input_specs=dict(state=input_shape),
 # #     options='--target_runtime tflite'
 # # )
-# # compile_job.download_target_model(os.path.join('outputs_aihub', format))
+# # compile_job.download_target_model(os.path.join('outputs_quant_aihub', format))
 
 # compile_job = hub.submit_compile_job(
 #     model=quantized_onnx_model,
 #     device=device,
 #     options='--target_runtime qnn_dlc'
 # )
-# compile_job.download_target_model(os.path.join('outputs_aihub', format))
+# compile_job.download_target_model(os.path.join('outputs_quant_aihub', format))

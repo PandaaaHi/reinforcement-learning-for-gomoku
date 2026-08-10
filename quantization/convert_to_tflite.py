@@ -28,4 +28,23 @@ compile_job = hub.submit_compile_job(
     input_specs=dict(state=input_shape),
     options='--target_runtime tflite'
 )
-compile_job.download_target_model(os.path.join('outputs_aihub', 'gomoku_model.tflite'))
+compile_job.download_target_model(os.path.join('outputs_tflite', 'unquantized.tflite'))
+
+compile_job = hub.submit_compile_job(
+    model=exported_torch_model,
+    device=device,
+    input_specs=dict(state=input_shape),
+    options='--target_runtime tflite --quantize_weight_type float16'
+)
+compile_job.download_target_model(os.path.join('outputs_tflite', 'fp16.tflite'))
+
+precisions = ['int8', 'w8a16']
+names = ['w8a8', 'w8a16']
+for qtype, name in zip(precisions, names):
+    compile_job = hub.submit_compile_job(
+        model=exported_torch_model,
+        device=device,
+        input_specs=dict(state=input_shape),
+        options=f'--target_runtime tflite --quantize_full_type {qtype}'
+    )
+    compile_job.download_target_model(f'outputs_tflite/{name}.tflite')

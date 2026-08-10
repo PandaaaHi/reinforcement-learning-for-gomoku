@@ -34,7 +34,39 @@ torch_model.eval()
 
 torch_test_data = torch.tensor(test_data, dtype=torch.float32, device=device)
 policy_logits, _ = torch_model.forward(torch_test_data)
-torch_preds = torch.argmax(policy_logits, dim=1).numpy() # (1024,)
+torch_preds = torch.argmax(policy_logits, dim=1).numpy() # (1024*7,)
+
+# compare with tflite
+import tensorflow.lite as tflite
+import glob
+
+tflite_dir = './outputs_tflite'
+tflite_files = sorted(glob.glob(os.path.join(tflite_dir, '*.tflite')))
+
+for tflite_model_path in tflite_files:
+    tflite_interpreter = tflite.Interpreter(model_path=tflite_model_path)
+    tflite_interpreter.allocate_tensors()
+
+    tflite_input_details  = tflite_interpreter.get_input_details()
+    tflite_output_details = tflite_interpreter.get_output_details()
+
+    tflite_preds = []
+    for data in test_data:
+        data = np.expand_dims(data, axis=0).astype(np.float32)
+        tflite_interpreter.set_tensor(tflite_input_details[0]['index'], data)
+        tflite_interpreter.invoke()
+        policy_logits_tflite = tflite_interpreter.get_tensor(tflite_output_details[0]['index'])
+        tflite_preds.append(np.argmax(policy_logits_tflite, axis=1).squeeze())
+    tflite_preds = np.array(tflite_preds)
+
+    matches = (tflite_preds == torch_preds)
+    accuracy = np.mean(matches)
+
+    model_name = os.path.splitext(os.path.basename(tflite_model_path))[0]
+
+    print(f'tflite format: {model_name}')
+    print(f'tflite matched: {np.sum(matches)}/{len(torch_preds)}')
+    print(f'tflite accuracy: {accuracy:.4f} ({accuracy * 100:.2f}%)\n')
 
 # export torch model to onnx
 import onnx
